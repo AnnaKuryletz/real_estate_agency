@@ -40,6 +40,14 @@ class Flat(models.Model):
         null=True,
         blank=True,
         db_index=True)
+    
+    likes = models.ManyToManyField(
+        User,
+        blank=True,
+        verbose_name="Кто лайкнул",
+        related_name="liked_users",
+        db_index=True,
+    )
 
     has_balcony = models.NullBooleanField('Наличие балкона', db_index=True)
     active = models.BooleanField('Активно-ли объявление', db_index=True)
