@@ -66,7 +66,7 @@ class Complaint(models.Model):
         verbose_name="Квартира, на которую жаловались",
         related_name="complaints",
     )
-    complaint_test = models.TextField(
+    complaint_text = models.TextField(
         "Текст жалобы",
     )
 
@@ -75,9 +75,9 @@ class Complaint(models.Model):
 
 
 class Owner(models.Model):
-    owner_name = models.CharField("ФИО владельца", max_length=200)
-    owners_phonenumber = models.CharField("Номер владельца", max_length=20)
-    owner_pure_phone = PhoneNumberField(
+    name = models.CharField("ФИО владельца", max_length=200)
+    phonenumber = models.CharField("Номер владельца", max_length=20)
+    normalized_number = PhoneNumberField(
         "Нормализованный номер владельца", blank=True, region="RU"
     )
     flats = models.ManyToManyField(
@@ -85,4 +85,4 @@ class Owner(models.Model):
     )
 
     def __str__(self):
-        return self.owner_name
+        return self.name
