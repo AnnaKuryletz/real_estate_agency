@@ -38,7 +38,7 @@ class Flat(models.Model):
         User,
         blank=True,
         verbose_name="Кто лайкнул",
-        related_name="liked_users",
+        related_name="who_liked",
         db_index=True,
     )
 
@@ -81,7 +81,7 @@ class Owner(models.Model):
         "Нормализованный номер владельца", blank=True, region="RU"
     )
     flats = models.ManyToManyField(
-        Flat, verbose_name="Квартиры в собственности", related_name="owners_flat"
+        Flat, verbose_name="Квартиры в собственности", related_name="owners"
     )
 
     def __str__(self):
