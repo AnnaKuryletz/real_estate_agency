@@ -38,7 +38,7 @@ class Flat(models.Model):
         User,
         blank=True,
         verbose_name="Кто лайкнул",
-        related_name="who_liked",
+        related_name="liked_flats",
         db_index=True,
     )
 
