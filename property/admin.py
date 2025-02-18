@@ -17,6 +17,7 @@ class FlatAdmin(admin.ModelAdmin):
         "active",
         "floor",
     ]
+    raw_id_fields = ["likes"]
 
 
 @admin.register(Complaint)
