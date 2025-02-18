@@ -1,6 +1,11 @@
 from django.contrib import admin
-
 from .models import Flat, Complaint, Owner
+
+
+class OwnerInline(admin.TabularInline):
+    model = Owner.flats.through
+    raw_id_fields = ['owner']
+    extra = 1
 
 
 @admin.register(Flat)   
@@ -18,6 +23,7 @@ class FlatAdmin(admin.ModelAdmin):
         "floor",
     ]
     raw_id_fields = ["likes"]
+    inlines = [OwnerInline]
 
 
 @admin.register(Complaint)
